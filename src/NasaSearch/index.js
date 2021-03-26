@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import styled from "styled-components";
 import { Field, Form, Formik } from "formik";
-import { Button, TextField, Select, Divider } from "@cruk/cruk-react-components";
+import { Button, TextField, Select, Divider, Loader } from "@cruk/cruk-react-components";
 import axios from 'axios';
 import { useState } from "react";
 import { NasaResults } from './NasaResults';
@@ -160,6 +160,6 @@ export const NasaSearch = () => {
                 </Formik>
             </div>
             <Divider />
-            <NasaResults data={data} />
+            {isSubmitting? <Loader/> : <NasaResults data={data} />}
         </>)
 }
