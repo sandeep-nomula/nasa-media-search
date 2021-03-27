@@ -26,7 +26,7 @@ const PaperBox = styled(Box)`
   }
 `;
 
-export const NasaResults = (props) => {
+export const Results = (props) => {
 
   const { data } = props;
   return (
@@ -34,7 +34,7 @@ export const NasaResults = (props) => {
       {data?.slice(0, 10).map((r) => {
         const row = r?.data?.[0];
         return (
-          <>
+          <div key={row.nasa_id}>
             <PaperBox margin="none" backgroundColor="backgroundMid" >
               <Image>
                 <Player media={row.media_type} nasa_id={row.nasa_id} />
@@ -43,7 +43,7 @@ export const NasaResults = (props) => {
               <Description>{row?.description}</Description>
             </PaperBox>
             <Divider />
-          </>
+          </div>
         );
       })}
     </Box>

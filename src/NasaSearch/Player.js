@@ -1,4 +1,3 @@
-import ReactPlayer from 'react-player';
 
 const baseUrl = "https://images-assets.nasa.gov";
 
@@ -17,22 +16,17 @@ export const Player = (props) => {
 
   if (media === "video") {
     return (
-      <ReactPlayer
-        height={150}
-        width={250}
-        light={(`${baseUrl}/video/${encodeURIComponent(nasa_id)}/${encodeURIComponent(nasa_id)}~thumb.jpg`)}
-        url={`${baseUrl}/video/${nasa_id}/${nasa_id}~medium.mp4`}
-        controls={true}
-      />
+      <video width="250" height="180" controls poster={(`${baseUrl}/video/${encodeURIComponent(nasa_id)}/${encodeURIComponent(nasa_id)}~thumb.jpg`)}>
+        <source src={`${baseUrl}/video/${nasa_id}/${nasa_id}~medium.mp4`} type="video/mp4" />
+          Your browser does not support the video element.
+      </video>
     )
   }
 
   return (
-    <ReactPlayer
-      height={150}
-      width={250}
-      url={`${baseUrl}/audio/${nasa_id}/${nasa_id}~128k.mp3`}
-      controls={true}
-    />
+    <audio controls>
+      <source src={`${baseUrl}/audio/${nasa_id}/${nasa_id}~128k.mp3`} type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
   )
 }
